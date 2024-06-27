@@ -1,0 +1,36 @@
+{
+  "grid": [
+    ["E", "N", "G", "L", "I", "S", "H", "T", "E", "A", "C", "H", "E", "R", "S"],
+    ["R", "A", "N", "D", "O", "M", "W", "O", "R", "D", "S", "P", "A", "C", "E"],
+    ["I", "N", "T", "E", "R", "N", "E", "T", "C", "A", "F", "E", "S", "O", "N"],
+    ["C", "O", "M", "P", "U", "T", "E", "R", "S", "C", "I", "E", "N", "C", "E"],
+    ["H", "I", "S", "T", "O", "R", "Y", "B", "O", "O", "K", "S", "T", "O", "R"],
+    ["E", "M", "A", "T", "H", "E", "M", "A", "T", "I", "C", "S", "L", "I", "B"],
+    ["M", "U", "S", "I", "C", "C", "L", "A", "S", "S", "E", "S", "P", "A", "R"],
+    ["I", "S", "C", "I", "E", "N", "C", "E", "F", "I", "C", "T", "I", "O", "N"],
+    ["C", "H", "E", "M", "I", "S", "T", "R", "Y", "L", "A", "B", "S", "G", "Y"],
+    ["B", "I", "O", "L", "O", "G", "Y", "T", "U", "T", "O", "R", "I", "A", "L"],
+    ["P", "H", "Y", "S", "I", "C", "S", "E", "X", "P", "E", "R", "I", "M", "E"],
+    ["E", "N", "G", "I", "N", "E", "E", "R", "I", "N", "G", "D", "E", "G", "R"],
+    ["A", "R", "T", "H", "I", "S", "T", "O", "R", "Y", "C", "L", "A", "S", "S"],
+    ["M", "A", "R", "K", "E", "T", "I", "N", "G", "S", "T", "U", "D", "I", "E"],
+    ["S", "O", "C", "I", "O", "L", "O", "G", "Y", "P", "R", "O", "J", "E", "C"]
+  ],
+  "words": [
+    "ENGLISH TEACHERS",
+    "RANDOM WORDS",
+    "INTERNET CAFES",
+    "COMPUTER SCIENCE",
+    "HISTORY BOOKS",
+    "MATHEMATICS LIBRARY",
+    "MUSIC CLASSES",
+    "SCIENCE FICTION",
+    "CHEMISTRY LABS",
+    "BIOLOGY TUTORIALS",
+    "PHYSICS EXPERIMENTS",
+    "ENGINEERING DEGREE",
+    "ART HISTORY CLASS",
+    "MARKETING STUDIES",
+    "SOCIOLOGY PROJECTS"
+  ]
+}

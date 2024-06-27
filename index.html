@@ -1,22 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Word Search Puzzle</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Search Puzzles</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <style>
-    /* CSS styles go here */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(15, 1fr);
+      grid-gap: 5px;
+    }
+    .grid-item {
+      width: 30px;
+      height: 30px;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .found {
+      background-color: #28a745 !important;
+      color: white !important;
+    }
   </style>
 </head>
 <body>
-  <h1>Word Search Puzzle</h1>
-  <div id="puzzle-container"></div>
-  <script src="https://appproject01.github.io/searchpuzzle/js/app.js"></script>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Word Search Puzzles</h1>
+    <div id="puzzle-container" class="d-flex flex-column align-items-center">
+      <div class="grid-container mb-4"></div>
+      <div id="word-list" class="mb-4"></div>
+      <button id="reset-btn" class="btn btn-primary"><i class="fas fa-redo-alt"></i> Reset</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    // JavaScript code to initialize and render the puzzle
-    const puzzleConfig = {
-      book: 'Book_1',
-      containerSelector: '#puzzle-container'
-    };
-    initWordSearchPuzzle(puzzleConfig);
+    const puzzleContainer = document.querySelector('.grid-container');
+    const wordList = document.querySelector('#word-list');
+    const resetBtn = document.querySelector('#reset-btn');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookName = urlParams.get('book') || 'Book_400';
+
+    axios.get(`https://appproject01.github.io/searchpuzzle/data/${bookName}.json`)
+      .then(response => {
+        const { grid, words } = response.data;
+        renderGrid(grid);
+        renderWordList(words);
+        initializeGame(grid, words);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+    function renderGrid(grid) {
+      grid.forEach(row => {
+        const rowElement = document.createElement('div');
+        rowElement.classList.add('grid-container');
+        row.forEach(letter => {
+          const letterElement = document.createElement('div');
+          letterElement.classList.add('grid-item');
+          letterElement.textContent = letter;
+          rowElement.appendChild(letterElement);
+        });
+        puzzleContainer.appendChild(rowElement);
+      });
+    }
+
+    function renderWordList(words) {
+      words.forEach(word => {
+        const wordElement = document.createElement('div');
+        wordElement.classList.add('d-flex', 'justify-content-between', 'mb-2');
+        const wordText = document.createElement('span');
+        wordText.textContent = word;
+        const foundIcon = document.createElement('i');
+        foundIcon.classList.add('fas', 'fa-check-circle', 'text-success', 'd-none');
+        wordElement.appendChild(wordText);
+        wordElement.appendChild(foundIcon);
+        wordList.appendChild(wordElement);
+      });
+    }
+
+    function initializeGame(grid, words) {
+      const cells = document.querySelectorAll('.grid-item');
+      const foundWords = new Set();
+
+      cells.forEach((cell, index) => {
+        cell.addEventListener('click', () => {
+          const row = Math.floor(index / 15);
+          const col = index % 15;
+          checkWords(grid, words, row, col, foundWords);
+        });
+      });
+
+      resetBtn.addEventListener('click', () => {
+        foundWords.clear();
+        cells.forEach(cell => cell.classList.remove('found'));
+        document.querySelectorAll('#word-list i').forEach(icon => icon.classList.add('d-none'));
+      });
+    }
+
+    function checkWords(grid, words, startRow, startCol, foundWords) {
+      words.forEach(word => {
+        if (!foundWords.has(word)) {
+          const directions = [
+            [0, 1], [0, -1], [1, 0], [-1, 0],
+            [1, 1], [1, -1], [-1, 1], [-1, -1]
+          ];
+          for (const [dx, dy] of directions) {
+            if (checkWord(grid, word, startRow, startCol, dx, dy)) {
+              foundWords.add(word);
+              markWord(grid, word, startRow, startCol, dx, dy);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    function checkWord(grid, word, startRow, startCol, dx, dy) {
+      let row = startRow;
+      let col = startCol;
+      for (let i = 0; i < word.length; i++) {
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] !== word[i]) {
+          return false;
+        }
+        row += dy;
+        col += dx;
+      }
+      return true;
+    }
+
+    function markWord(grid, word, startRow, startCol, dx, dy) {
+      let row = startRow;
+      let col = startCol;
+      const cells = document.querySelectorAll('.grid-item');
+      for (let i = 0; i < word.length; i++) {
+        const index = row * 15 + col;
+        cells[index].classList.add('found');
+        row += dy;
+        col += dx;
+      }
+      const wordElement = document.querySelector(`#word-list span:nth-child(${word.split(' ').join('+')}`);
+      wordElement.nextElementSibling.classList.remove('d-none');
+    }
   </script>
 </body>
 </html>

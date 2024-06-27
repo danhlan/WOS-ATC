@@ -1,14 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Word Search Lookup</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>WOS Word Finder</title>
+  <style>
+    /* Định dạng CSS cho menu lựa chọn */
+    nav {
+      background-color: #333;
+      overflow: hidden;
+    }
+    
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    nav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    /* Định dạng CSS cho bảng ma trận 23x16 */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-  <h1>Word Search Lookup</h1>
-  <input type="text" id="searchInput" placeholder="Enter a word">
-  <button onclick="lookupWord()">Search</button>
-  <div id="resultContainer"></div>
-  <script src="script.js"></script>
+  <h1>WOS Word Finder</h1>
+  
+  <nav>
+    <a href="#" id="wos-link" class="active">WOS</a>
+    <a href="#" id="crw-link">CRW</a>
+  </nav>
+  
+  <div id="wos-content" style="display: block;">
+    <h2>WOS</h2>
+    <ul>
+      <li><a href="#" id="book1-link">Book1</a></li>
+      <li><a href="#" id="book2-link">Book2</a></li>
+      <li><a href="#" id="book3-link">Book3</a></li>
+      <!-- Thêm thêm các lựa chọn Book khác -->
+    </ul>
+    
+    <div id="book-content" style="display: none;">
+      <h3>Book1</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Vị trí</th>
+            <th>Từ</th>
+            <th>Nghĩa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1,1</td>
+            <td>Word1</td>
+            <td>Nghĩa của Word1</td>
+          </tr>
+          <!-- Thêm các hàng khác -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div id="crw-content" style="display: none;">
+    <h2>CRW</h2>
+    <!-- Thêm phần nội dung về CRW -->
+  </div>
+  
+  <script>
+    // Thêm các sự kiện click để hiển thị nội dung tương ứng
+    document.getElementById('wos-link').addEventListener('click', function() {
+      this.classList.add('active');
+      document.getElementById('crw-link').classList.remove('active');
+      document.getElementById('wos-content').style.display = 'block';
+      document.getElementById('crw-content').style.display = 'none';
+    });
+    
+    document.getElementById('crw-link').addEventListener('click', function() {
+      this.classList.add('active');
+      document.getElementById('wos-link').classList.remove('active');
+      document.getElementById('crw-content').style.display = 'block';
+      document.getElementById('wos-content').style.display = 'none';
+    });
+    
+    document.getElementById('book1-link').addEventListener('click', function() {
+      document.getElementById('book-content').style.display = 'block';
+      // Hiển thị nội dung của Book1
+    });
+    
+    // Thêm sự kiện click cho các lựa chọn Book khác
+  </script>
 </body>
 </html>

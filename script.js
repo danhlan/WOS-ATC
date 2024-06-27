@@ -54,4 +54,16 @@ function loadBookContent(book) {
   document.querySelector('.word-image').src = 'atcimage.jpg';
   document.querySelector('.word-title').textContent = 'ATC GROUP';
   document.querySelector('.word-definition').textContent = 'ATC GROUP là tập đoàn xuyên quốc gia hàng đầu trong lĩnh vực cung cấp dịch vụ quản lý tài sản và quản lý quỹ đầu tư tại Việt Nam. ATC GROUP được thành lập vào năm 2008, với sứ mệnh cung cấp các giải pháp tài chính toàn diện và chuyên nghiệp nhất cho khách hàng.';
+
+  // Thêm code mới vào đây
+  const wordSearchInput = document.getElementById('word-search-input');
+  const searchButton = document.getElementById('search-button');
+
+  searchButton.addEventListener('click', () => {
+    const searchTerm = wordSearchInput.value.trim();
+    if (searchTerm) {
+      // Thực hiện tìm kiếm từ khóa và hiển thị kết quả
+      console.log(`Searching for: ${searchTerm}`);
+    }
+  });
 }

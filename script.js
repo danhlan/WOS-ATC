@@ -51,7 +51,7 @@ function loadBookContent(book) {
   console.log(`Loading content for ${book}`);
 
   // Example:
-  document.querySelector('.word-image').src = 'example-image.jpg';
+  document.querySelector('.word-image').src = 'atcimage.jpg';
   document.querySelector('.word-title').textContent = 'Example Word';
   document.querySelector('.word-definition').textContent = 'This is an example word definition.';
 }

@@ -62,3 +62,57 @@ body {
     max-width: 200px;
     height: auto;
   }
+  #book1-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  #book1 .image-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #book1 .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  #book1 .word-search {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  #book1 .word-search h2 {
+    margin-top: 0;
+  }
+  
+  #book1 .word-search ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #book1 .word-search li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .word {
+    font-weight: bold;
+  }
+  #book1 .word-search li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  #book1 .word-search .word-image {
+    max-width: 50px;
+    height: auto;
+    margin-right: 10px;
+  }

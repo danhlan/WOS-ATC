@@ -9,10 +9,14 @@
 <body>
   <header>
     <h1>Word Search and Crossword</h1>
+    <nav>
+      <a href="#" id="home-link">Home</a>
+      <a href="#" id="back-link" style="display: none;">Back</a>
+    </nav>
   </header>
 
   <main>
-    <div class="game-selector">
+    <div class="game-selector" id="game-selector">
       <div class="game-card" id="word-search">
         <h2>Word Search</h2>
       </div>
@@ -21,37 +25,23 @@
       </div>
     </div>
 
-    <div class="game-container" id="word-search-container">
-      <div class="book-selector">
-        <h3>Select a Book</h3>
-        <ul>
-          <li><a href="#" data-book="book1">Book 1</a></li>
-          <li><a href="#" data-book="book2">Book 2</a></li>
-          <li><a href="#" data-book="book3">Book 3</a></li>
-        </ul>
-      </div>
-      <div class="word-search-board">
-        <!-- Word search board will be dynamically generated here -->
-      </div>
-      <div class="word-info">
-        <!-- Word information will be displayed here -->
+    <div class="game-container" id="book-selector" style="display: none;">
+      <h2>Select a Book</h2>
+      <div class="book-options">
+        <div class="book-card" data-book="book1">Book 1</div>
+        <div class="book-card" data-book="book2">Book 2</div>
+        <div class="book-card" data-book="book3">Book 3</div>
       </div>
     </div>
 
-    <div class="game-container" id="crossword-container">
-      <div class="book-selector">
-        <h3>Select a Book</h3>
-        <ul>
-          <li><a href="#" data-book="book1">Book 1</a></li>
-          <li><a href="#" data-book="book2">Book 2</a></li>
-          <li><a href="#" data-book="book3">Book 3</a></li>
-        </ul>
-      </div>
-      <div class="crossword-board">
-        <!-- Crossword board will be dynamically generated here -->
-      </div>
+    <div class="game-container" id="word-container" style="display: none;">
       <div class="word-info">
-        <!-- Word information will be displayed here -->
+        <img src="" alt="" class="word-image">
+        <h2 class="word-title"></h2>
+        <p class="word-definition"></p>
+      </div>
+      <div class="word-board">
+        <!-- Word search or crossword board will be dynamically generated here -->
       </div>
     </div>
   </main>

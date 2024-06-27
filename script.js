@@ -1,29 +1,46 @@
-// Add your custom JavaScript code here
 document.addEventListener('DOMContentLoaded', () => {
   const wordSearchButton = document.getElementById('word-search');
   const crosswordButton = document.getElementById('crossword');
-  const wordSearchContainer = document.getElementById('word-search-container');
-  const crosswordContainer = document.getElementById('crossword-container');
+  const gameSelector = document.getElementById('game-selector');
+  const bookSelector = document.getElementById('book-selector');
+  const wordContainer = document.getElementById('word-container');
+  const homeLink = document.getElementById('home-link');
+  const backLink = document.getElementById('back-link');
 
   wordSearchButton.addEventListener('click', () => {
-    wordSearchContainer.style.display = 'block';
-    crosswordContainer.style.display = 'none';
+    gameSelector.style.display = 'none';
+    bookSelector.style.display = 'block';
+    backLink.style.display = 'inline';
   });
 
   crosswordButton.addEventListener('click', () => {
-    crosswordContainer.style.display = 'block';
-    wordSearchContainer.style.display = 'none';
+    gameSelector.style.display = 'none';
+    bookSelector.style.display = 'block';
+    backLink.style.display = 'inline';
   });
 
-  // Add event listeners for book selection
-  const bookLinks = document.querySelectorAll('.book-selector a');
-  bookLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const book = event.target.dataset.book;
-      // Load and display the selected book's content
+  const bookCards = document.querySelectorAll('.book-card');
+  bookCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const book = card.dataset.book;
+      bookSelector.style.display = 'none';
+      wordContainer.style.display = 'block';
       loadBookContent(book);
     });
+  });
+
+  homeLink.addEventListener('click', () => {
+    gameSelector.style.display = 'flex';
+    bookSelector.style.display = 'none';
+    wordContainer.style.display = 'none';
+    backLink.style.display = 'none';
+  });
+
+  backLink.addEventListener('click', () => {
+    gameSelector.style.display = 'none';
+    bookSelector.style.display = 'block';
+    wordContainer.style.display = 'none';
+    backLink.style.display = 'inline';
   });
 });
 
@@ -32,4 +49,9 @@ function loadBookContent(book) {
   // and update the page with the book's content
   // (word search board, crossword board, word information, etc.)
   console.log(`Loading content for ${book}`);
+
+  // Example:
+  document.querySelector('.word-image').src = 'example-image.jpg';
+  document.querySelector('.word-title').textContent = 'Example Word';
+  document.querySelector('.word-definition').textContent = 'This is an example word definition.';
 }

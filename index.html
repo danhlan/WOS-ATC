@@ -43,6 +43,17 @@
     th {
       background-color: #f2f2f2;
     }
+    
+    /* Định dạng CSS cho ảnh */
+    .image-cell {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .image-cell img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -68,6 +79,7 @@
         <thead>
           <tr>
             <th>Vị trí</th>
+            <th>Ảnh</th>
             <th>Từ</th>
             <th>Nghĩa</th>
           </tr>
@@ -75,6 +87,7 @@
         <tbody>
           <tr>
             <td>1,1</td>
+            <td class="image-cell"><img src="image1.jpg" alt="Image 1"></td>
             <td>Word1</td>
             <td>Nghĩa của Word1</td>
           </tr>
@@ -86,7 +99,35 @@
   
   <div id="crw-content" style="display: none;">
     <h2>CRW</h2>
-    <!-- Thêm phần nội dung về CRW -->
+    <ul>
+      <li><a href="#" id="crw-book1-link">CRW Book1</a></li>
+      <li><a href="#" id="crw-book2-link">CRW Book2</a></li>
+      <li><a href="#" id="crw-book3-link">CRW Book3</a></li>
+      <!-- Thêm thêm các lựa chọn CRW Book khác -->
+    </ul>
+    
+    <div id="crw-book-content" style="display: none;">
+      <h3>CRW Book1</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Vị trí</th>
+            <th>Ảnh</th>
+            <th>Từ</th>
+            <th>Nghĩa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1,1</td>
+            <td class="image-cell"><img src="atcimage.jpg" alt="CRW Image 1"></td>
+            <td>ATC</td>
+            <td>Tập đoàn xuyên quốc gia ATC Global</td>
+          </tr>
+          <!-- Thêm các hàng khác -->
+        </tbody>
+      </table>
+    </div>
   </div>
   
   <script>
@@ -108,6 +149,11 @@
     document.getElementById('book1-link').addEventListener('click', function() {
       document.getElementById('book-content').style.display = 'block';
       // Hiển thị nội dung của Book1
+    });
+    
+    document.getElementById('crw-book1-link').addEventListener('click', function() {
+      document.getElementById('crw-book-content').style.display = 'block';
+      // Hiển thị nội dung của CRW Book1
     });
     
     // Thêm sự kiện click cho các lựa chọn Book khác

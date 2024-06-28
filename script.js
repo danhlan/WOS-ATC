@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   homeLink.addEventListener('click', () => {
+    // Ẩn tất cả các container của sách trước khi hiển thị lại bookSelector
+    const allBookContainers = document.querySelectorAll('.game-container');
+    allBookContainers.forEach(container => {
+      container.style.display = 'none';
+    });
     gameSelector.style.display = 'flex';
     bookSelector.style.display = 'none';
     wordContainer.style.display = 'none';
